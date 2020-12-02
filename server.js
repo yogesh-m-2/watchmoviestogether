@@ -46,7 +46,7 @@ app.get('/api',jsonParser, function (req, res) {
 
 })
 
-const port = process.env.port || 3000;
+const port = process.env.port || 8081;
 app.listen(port,function(){
-  console.log("server started on 9000");
+  console.log(port);
 });
