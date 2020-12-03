@@ -1,7 +1,6 @@
 {
   "name": "watchmoviestogether",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "dependencies": {
     "express": "^4.17.1"
@@ -20,5 +19,6 @@
   "bugs": {
     "url": "https://github.com/yogesh-m-2/watchmoviestogether/issues"
   },
-  "homepage": "https://github.com/yogesh-m-2/watchmoviestogether#readme"
+  "homepage": "https://github.com/yogesh-m-2/watchmoviestogether#readme",
+  "description": ""
 }
