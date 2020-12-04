@@ -2,6 +2,5 @@ option_settings:
   - namespace: aws:elasticbeanstalk:container:nodejs
     option_name: NodeCommand
     value: "npm i -D concurrently"
-  - namespace: aws:elasticbeanstalk:container:nodejs
-    option_name: NodeCommand
+  -option_name: NodeCommand1
     value: "npm start"
