@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^3.0.4"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "node server.js",
     "client": "npm start --prefix client",
-    "start": "npm start --prefix client"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
