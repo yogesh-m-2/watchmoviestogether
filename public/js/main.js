@@ -7,11 +7,28 @@ const userList = document.getElementById('users');
 const {username,room} = Qs.parse(location.search,{
 ignoreQueryPrefix: true
 });
+socket.on("pause_play_action",({action,time})=>{
+ if(action=="playing"){
+   console.log(time);
+   if(time>(player.getCurrentTime()+0.1) || time<(player.getCurrentTime()-0.1)  ){
+     player.seekTo(time,false);
+   }
 
+   player.playVideo();
+
+ }else if (action=="paused") {
+   console.log(action);
+   if(time>(player.getCurrentTime()+0.1) || (time<player.getCurrentTime()-0.1)  ){
+     player.seekTo(time,false);
+   }
+   player.pauseVideo();
+
+ }
+});
 socket.on('roomUsers',({room,users})=>{
   outputRoomName(room);
   outputUsers(users);
-})
+});
 
 socket.emit('joinRoom',{username,room})
 console.log(username,room);

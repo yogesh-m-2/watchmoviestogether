@@ -8,6 +8,23 @@
   <title>ChatCord App</title>
 </head>
 <body>
+
+  <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+  <iframe id="existing-iframe-example"
+    width="640" height="360"
+    src="https://www.youtube.com/embed/tcYodQoapMg?enablejsapi=1"
+    frameborder="0"
+    style="border: solid 4px #37474F"
+></iframe>
+        <script src="js/playercontrols.js">
+
+     </script>
+
+
+
+
+
+
   <div class="chat-container">
     <header class="chat-header">
       <h1><i class="fas fa-smile"></i> ChatCord</h1>
@@ -19,7 +36,7 @@
         <h2 id="room-name"> JavaScript</h2>
         <h3><i class="fas fa-users"></i> Users</h3>
         <ul id="users">
-          
+
         </ul>
       </div>
       <div class="chat-messages">
@@ -40,11 +57,13 @@
         <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
       </form>
     </div>
+<button onclick="disp()" name="button">click me</button>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js" integrity="sha512-53y53BQwxZvk4YGd9SkHPqI7nDwlIIFZ4D2BSJG08Co7y6O3YsWeRtO6trPtdoyqfTCTkTbCulNosIAI6E4UvQ==" crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js">
 
   </script>
+
   <script src="js/main.js"></script>
 </body>
 </html>
