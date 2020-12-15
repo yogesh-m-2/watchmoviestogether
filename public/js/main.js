@@ -11,15 +11,15 @@ socket.on("pause_play_action",({action,time})=>{
  if(action=="playing"){
    console.log(time);
    if(time>(player.getCurrentTime()+0.1) || time<(player.getCurrentTime()-0.1)  ){
-     player.seekTo(time,false);
+     player.seekTo(time,true);
    }
 
    player.playVideo();
 
  }else if (action=="paused") {
    console.log(action);
-   if(time>(player.getCurrentTime()+0.1) || (time<player.getCurrentTime()-0.1)  ){
-     player.seekTo(time,false);
+   if(time>(player.getCurrentTime()+0.1) || time<(player.getCurrentTime()-0.1)  ){
+     player.seekTo(time,true);
    }
    player.pauseVideo();
 
