@@ -10,9 +10,9 @@ ignoreQueryPrefix: true
 socket.on("pause_play_action",({action,time})=>{
  if(action=="playing"){
    console.log("playing"+time);
-   if(time>(player.getCurrentTime()+1) || time<(player.getCurrentTime()-1)  ){
-     player.seekTo(time,true);
-   }
+   // if(time>(player.getCurrentTime()+1) || time<(player.getCurrentTime()-1)  ){
+   //   player.seekTo(time,true);
+   // }
 
    player.playVideo();
 
