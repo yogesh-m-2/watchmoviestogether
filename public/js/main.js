@@ -18,9 +18,9 @@ socket.on("pause_play_action",({action,time})=>{
 
  }else if (action=="paused") {
    console.log("paused"+time);
-   if(time!=player.getCurrentTime()){
-     player.seekTo(time,true);
-   }
+   // if(time!=player.getCurrentTime()){
+   //   player.seekTo(time,true);
+   // }
    player.pauseVideo();
 
  }
