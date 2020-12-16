@@ -43,11 +43,11 @@ async function onPlayerStateChange(event) {
   }
   else{done=false;}
 if(done==true){
-  console.log(player.getCurrentTime());
+  console.log("for playing"+player.getCurrentTime());
   socket.emit("pause_play",{action:"playing",time:player.getCurrentTime()});
 }
 else{
-  console.log(player.getCurrentTime());
+  console.log("for pausing"+player.getCurrentTime());
   socket.emit("pause_play",{action:"paused",time:player.getCurrentTime()});
 }
 }
