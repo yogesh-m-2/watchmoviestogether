@@ -1,3 +1,6 @@
+var vid = document.getElementById("existing-iframe-example");
+
+
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 var status=null;
@@ -21,8 +24,10 @@ async function onYouTubeIframeAPIReady() {
 }
 
  function disp(){
-//  player.seekTo(40, true);
-  console.log(player.getCurrentTime());
+  console.log(event.target);
+  player.seekTo(40, true);
+
+
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -31,24 +36,30 @@ async function onPlayerReady(event) {
   console.log(player.getCurrentTime());
 }
 
-// 5. The API calls this function when the player's state changes.
-//    The function indicates that when playing a video (state=1),
-//    the player should play for six seconds and then stop.
+
 var done = false;
 async function onPlayerStateChange(event) {
-
+console.log(event.data);
   if (event.data == YT.PlayerState.PLAYING && !done) {
    // setTimeout(stopVideo, 6000);
+
     done = true;
   }
   else{done=false;}
 if(done==true){
   console.log("for playing"+player.getCurrentTime());
-  socket.emit("pause_play",{action:"playing",time:player.getCurrentTime()});
+  if(event.data!=3){
+    socket.emit("pause_play",{action:"playing",time:player.getCurrentTime()});
+  }
+
 }
 else{
+  //player.pauseVideo();
   console.log("for pausing"+player.getCurrentTime());
-  socket.emit("pause_play",{action:"paused",time:player.getCurrentTime()});
+  if(event.data!=3){
+    socket.emit("pause_play",{action:"paused",time:player.getCurrentTime()});
+  }
+
 }
 }
 async function stopVideo() {
