@@ -1,33 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title></title>
+	<title> Watch Together</title>
+	<link rel="icon" href="favicon.ico">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		body{	
+      	overflow-y: hidden;
+    	overflow-x: hidden;
+		}
+	</style>
   </head>
   <body>
+	  
+	<div class= "wrapper">
+		<nav class="navbar">
+			<img class="logo" src="logo2.png">
+			<ul>
+				<li><a class="active" href="index.html">HOME</a></li>
+				<li><a href="chat.html">CHAT</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+			</ul>
+		</nav>	
+		<div class="center" >
+		<h2>Watch Movies With Friends ! </h2>
+		</div>
+				
+<div  style="position: relative; top: 300px; left: 550px;" id="move" >	
     <form action="chat">
-					<div class="form-control">
-						<label for="username">Username</label>
-						<input
+					<div class="form-control" >
+						<label id="colour" for="username">Username</label>
+						<div style="font-size: 20px; margin: 10px; color: white;"></div>
+						<input class="sizeoftext"
 							type="text"
 							name="username"
-							id="username"
+							id="text1"
+							size="30"
 							placeholder="Enter username..."
-							required
-						/>
+							required/>
+						<br><br>
 					</div>
 					<div class="form-control">
-						<label for="room">Room</label>
-						<select name="room" id="room">
+						<label id="colour" for="room">Room</label>
+						<select  style="width: 200px; height: 20px;" id="text1" name="room" id="room" ><br>
 							<option value="JavaScript">JavaScript</option>
 							<option value="Python">Python</option>
 							<option value="PHP">PHP</option>
+						
 							<option value="C#">C#</option>
 							<option value="Ruby">Ruby</option>
 							<option value="Java">Java</option>
 						</select>
-					</div>
-					<button type="submit" class="btn">Join Chat</button>
-				</form>
+					</div><br><br>
+					<button id= "button1" type="submit" class="btn2">Join Chat</button>
+		</form>
+	</div>
   </body>
 </html>

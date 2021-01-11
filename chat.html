@@ -2,33 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Watch Movies Together</title>
+  <link rel="icon" href="favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/style.css">
-  <title>ChatCord App</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+   body{
+      overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
+    <nav class="navbar">
+			<img class="logo" src="logo3.png">
+			<ul>
+				<li><a class="active" href="index.html">HOME</a></li>
+				<li><a href="chat.html">CHAT</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+			</ul>
+		</nav>	
 
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div style="position: relative; top: 80px;  ">
   <iframe id="existing-iframe-example"
     width="640" height="360"
-    src="https://www.youtube.com/embed/tcYodQoapMg?enablejsapi=1"
+    src="https://www.youtube.com/embed/tFPMDHmWq28"
     frameborder="0"
-    style="border: solid 4px #37474F"
-></iframe>
+    style="border: solid 4px #37474F">
+  </iframe>
+  </div>
+
         <script src="js/playercontrols.js">
 
      </script>
 
+    <div style="position: relative; top: 150px; left: 40px; ">
+      <input type="text" size="50"/>
+    </div>
 
 
 
 
-
-  <div class="chat-container">
+  <div style="position: relative; left: 1000px;" class="chat-container">
     <header class="chat-header">
-      <h1><i class="fas fa-smile"></i> ChatCord</h1>
-      <a href="index.html" class="btn">Leave Room</a>
+      <h1>🎉 ChatCord</h1><br>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -57,7 +77,8 @@
         <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
       </form>
     </div>
-<button onclick="disp()" name="button">click me</button>
+<button onclick="disp()" name="button">click me</button><br><br>
+<a href="index.html" id="button1">Leave Room</a><br>
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js" integrity="sha512-53y53BQwxZvk4YGd9SkHPqI7nDwlIIFZ4D2BSJG08Co7y6O3YsWeRtO6trPtdoyqfTCTkTbCulNosIAI6E4UvQ==" crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js">
@@ -65,5 +86,7 @@
   </script>
 
   <script src="js/main.js"></script>
+  
+  </div>
 </body>
 </html>
