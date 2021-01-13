@@ -1,9 +1,23 @@
 const socket = io();
 const chatForm = document.getElementById('chat-form');
-const chatMessages = document.querySelector('.chat-mesages');
+const chatMessages = document.querySelector('.chat-messages');
 const roomName = document.getElementById('room-name');
 const userList = document.getElementById('users');
+//var link="https://www.youtube.com/embed/tFPMDHmWq28";
+document.getElementById("bttn").addEventListener("click",loadurl);
 
+function loadurl(){
+  var link=document.getElementById("linker").value;
+  var str2=link.replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/');
+  console.log(document.getElementById("existing-iframe-example").src);
+  document.getElementById("existing-iframe-example").src=str2;
+  socket.emit("urllink",str2);
+   
+}
+socket.on('urlrecv',(url)=>{
+  console.log("in room"+url);
+  document.getElementById("existing-iframe-example").src=url+"?enablejsapi=1";
+});
 const {username,room} = Qs.parse(location.search,{
 ignoreQueryPrefix: true
 });
@@ -35,7 +49,7 @@ console.log(username,room);
 socket.on('message',message=>{
   console.log(message);
   outputMessage(message);
-  //chatMessages.scrollTop = chatMessages.scrollHeight;
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 
 });
 

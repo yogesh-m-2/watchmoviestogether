@@ -29,6 +29,10 @@ io.on('connection',socket =>{
     // console.log(time);
      io.to(user.room).emit("pause_play_action",{action,time});
    });
+   socket.on("urllink",(url)=>{
+     console.log(url);
+     io.to(user.room).emit("urlrecv",url);
+   });
      socket.emit('message',formatMessage(user.username,'welcome to chat'));
      socket.broadcast
      .to(user.room)

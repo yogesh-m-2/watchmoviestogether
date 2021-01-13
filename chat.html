@@ -20,19 +20,20 @@
 			<img class="logo" src="logo3.png">
 			<ul>
 				<li><a class="active" href="index.html">HOME</a></li>
-				<li><a href="chat.html">CHAT</a></li>
-				<li><a href="about.html">ABOUT</a></li>
+				<li><a href="chat">CHAT</a></li>
+				<li><a href="about">ABOUT</a></li>
 			</ul>
 		</nav>	
-
+    
   <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div style="position: relative; top: 80px;  ">
   <iframe id="existing-iframe-example"
     width="640" height="360"
-    src="https://www.youtube.com/embed/tFPMDHmWq28"
+    src='https://www.youtube.com/embed/tFPMDHmWq28?enablejsapi=1'
     frameborder="0"
     style="border: solid 4px #37474F">
   </iframe>
+  <a href="index.html" id="button1">Leave Room</a><br>
   </div>
 
         <script src="js/playercontrols.js">
@@ -40,15 +41,16 @@
      </script>
 
     <div style="position: relative; top: 150px; left: 40px; ">
-      <input type="text" size="50"/>
+      <input id="linker" type="text" name="url" placeholder="Enter Url" size="50"/>
+      <button id="bttn">Load</button>
     </div>
 
 
 
 
-  <div style="position: relative; left: 1000px;" class="chat-container">
+  <div class="chat-container">
     <header class="chat-header">
-      <h1>🎉 ChatCord</h1><br>
+      <h1>Chat Box</h1><br>
     </header>
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -77,8 +79,8 @@
         <button class="btn"><i class="fas fa-paper-plane"></i> Send</button>
       </form>
     </div>
-<button onclick="disp()" name="button">click me</button><br><br>
-<a href="index.html" id="button1">Leave Room</a><br>
+
+
   </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.js" integrity="sha512-53y53BQwxZvk4YGd9SkHPqI7nDwlIIFZ4D2BSJG08Co7y6O3YsWeRtO6trPtdoyqfTCTkTbCulNosIAI6E4UvQ==" crossorigin="anonymous"></script>
   <script src="/socket.io/socket.io.js">
