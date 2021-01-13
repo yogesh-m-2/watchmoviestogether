@@ -222,17 +222,23 @@
 
 .chat-messages .message {
 	padding: 10px;
+	background-color: rgb(15, 170, 137);
 	margin-bottom: 15px;
-	background-color: rgb(255, 255, 255);
-	border-radius: 5px;
+	border-radius: 20px;
 }
-
 .chat-messages .message .meta {
-	font-size: 15px;
+	font-size: 10px;
 	font-weight: bold;
 	color: rgb(5, 0, 0);
 	
 	margin-bottom: 7px;
+}
+.chat-messages .message .text {
+	font-size: 10px;
+	font-weight: bold;
+	color: rgb(5, 0, 0);
+	
+	margin-right: 7px;
 }
 
 .chat-messages .message .meta span {
