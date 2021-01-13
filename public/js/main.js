@@ -11,7 +11,13 @@ function loadurl(){
   var str2=link.replace('https://www.youtube.com/watch?v=','https://www.youtube.com/embed/');
   console.log(document.getElementById("existing-iframe-example").src);
   document.getElementById("existing-iframe-example").src=str2;
+  socket.emit("urllink",str2);
+   
 }
+socket.on('urlrecv',(url)=>{
+  console.log("in room"+url);
+  document.getElementById("existing-iframe-example").src=url+"?enablejsapi=1";
+});
 const {username,room} = Qs.parse(location.search,{
 ignoreQueryPrefix: true
 });
