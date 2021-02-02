@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
+const mongoose      =require('mongoose')
+const morgan        =require('morgan')
 const https = require('https');
 const path = require('path');
 const http = require('http');
@@ -7,12 +9,31 @@ const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const {userJoin,getCurrentUser,userLeave,getRoomUsers}= require('./utils/users');
 var jsonParser = bodyparser.json()
+const AuthRoute = require('./routes/auth')
+
+mongoose.connect('mongodb+srv://yogesh:yogesh14@cluster0.eauui.mongodb.net/testdb',{useNewURlParser: true, useUnifiedTopology: true})
+const db = mongoose.connection
+
+db.on('error',(err) => {
+  console.log(err)
+})
+db.once('open',() =>{
+  console.log('Database Connection Established')
+})
+const User      = require('./models/User');
+const { request } = require('express');
+const { register } = require('./controllers/AuthController');
 
 app=express();
+
+
+//app.use(morgan('dev'))
+//app.use(bodyParser.urlencoded({extended:true}))
+//app.use(bodyParser.json())
 const server = http.createServer(app);
 const port = process.env.port || 8080;
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.set("view engine", "ejs");
 server.listen(port,()=>console.log(port));
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyparser.urlencoded({ extended: false })
@@ -91,7 +112,7 @@ app.use(function (req, res, next) {
 });
 app.get("/",function(request,response){
 
-    response.sendFile(__dirname+"/index.html");
+    response.render('login')
 });
 app.get("/index",function(request,response){
 
@@ -102,9 +123,94 @@ app.get("/about",function(request,response){
   response.sendFile(__dirname+"/about.html");
 });
 app.get("/login",function(request,response){
-
-    response.sendFile(__dirname+"/login.html");
+ 
+    response.render("login");
 });
+app.post("/login",urlencodedParser,function(req,res){
+  const bcrypt    =require('bcryptjs')
+  const jwt       =require('jsonwebtoken')
+  console.log(req.body);
+    var username = req.body.email
+    var password = req.body.password
+
+    User.findOne({$or: [{email:username},{phone:username}]})
+    .then(user => {
+        if(user){
+            bcrypt.compare(password, user.password, function(err, result){
+                if(err){
+                    res.json({
+                        error:err
+                    })
+                }
+                if(result){
+                    let token = jwt.sign({name: user.name}, 'verySecretValue',{expiresIn: '1h'})
+                    // res.json({
+
+                    //     message: 'Login Successful!',
+                    //     token 
+                        
+                    // })
+                    res.sendFile(__dirname+"/index.html");
+                }else{
+                    res.json({
+                        message: 'Password does not match!'
+                    })
+                }
+            })
+        }else{
+            res.json({
+                message: 'No user Found!'
+            })
+        }
+    })
+});
+
+// app.post("/register",function(request,response){
+//   console.log(request)
+//   // let user = new User({
+//   //   name: 'yogi',
+//   //   email: 'yogi',
+//   //   phone: '866887666',
+//   //   password: '8899'
+//   // })
+//   //user.save()
+//   response.sendFile(__dirname+"/register.html");
+// });
+app.get("/register",function(request,response){
+
+  response.render("register");
+});
+app.post('/register',urlencodedParser, function (req, res) {
+
+const bcrypt    =require('bcryptjs')
+console.log(req.body);
+  bcrypt.hash(req.body.pass,10,function(err,hashedPass){
+    if(err){
+        res.json({
+            error:err
+        })
+    }
+    let user = new User({
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        password: hashedPass
+    })
+    user.save()
+    .then(user =>{
+        // res.json({
+        //     message: 'User Added Successfully'
+        // })
+        res.render('login')
+    })
+    .catch(error=>{
+        res.json({
+            message: 'An error occured!'
+        })
+    })
+})
+  });
+  
 app.get("/home",function(request,response){
 
     response.sendFile(__dirname+"/index.html");
@@ -141,3 +247,4 @@ app.post('/api',jsonParser, function (req, res) {
 app.get('/api/flags',jsonParser, function (req, res) {
 res.send(""+flag+"");
 });
+app.use('/api',AuthRoute)

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <body style="background-image: url('https://wallpapercave.com/wp/qr0bJYf.jpg');">
+            <form id="myForm">
+                name <input id="1" type="text" value="">
+                email <input id="2" type="text" value="">
+                phone<input id="3" type="number" value="">
+                password <input id="4" type="text" value="">
+               <button onclick="sendj()">submit</button>
+
+            </form>
+           <script>
+              function sendj(){
+                let  name=document.getElementById("myForm").elements[0].value;
+               console.log(name);
+               document.write(name);
+               let  email=document.getElementById("2").value;
+               let  phone=document.getElementById("3").value;
+               let  pass=document.getElementById("4").value;
+
+                 sendJSON('yogi','aby','456','pass');
+               }
+               
+           </script>
+        </body>
+    </head>
+</html>

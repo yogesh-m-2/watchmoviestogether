@@ -65,15 +65,13 @@ else{
 async function stopVideo() {
   player.stopVideo();
 }
-async function sendJSON(n){
+ function sendJSON(name,email,phone,pass){
 
-            let result = n;
-            let name = ""+n+"";
-            let email = ""+player.getCurrentTime()+"";
+            
 
             // Creating a XHR object
             let xhr = new XMLHttpRequest();
-            let url = "http://localhost:8080/api";
+            let url = "http://localhost:8080/registering";
 
             // open a connection
             xhr.open("POST", url);
@@ -95,7 +93,7 @@ async function sendJSON(n){
             };
 
             // Converting JSON data to string
-            var data = JSON.stringify({ "name": name, "email": email });
+            var data = JSON.stringify({ "name": name, "email": email , "phone": name, "password": email });
             console.log(data);
             // Sending data with the request
             xhr.send(data);

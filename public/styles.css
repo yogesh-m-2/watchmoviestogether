@@ -1,5 +1,10 @@
+h1{
+	color:#117A65;
+}
 
-
+label{
+	color: #fff;
+}
 @import url('https://fonts.googleapis.com/css?family=Roboto:700&display=swap');
 *{
 	padding: 0;
